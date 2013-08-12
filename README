@@ -1,0 +1,62 @@
+ABOUT
+
+m2legovoxels converts .M files containing a 3D model into a voxelized version
+suitable for rendering the original 3D models with Lego bricks. The output of
+the program can be used with LDraw compatible programs.
+
+
+REQUIREMENTS AND ASSUMPTIONS
+
+m2legovoxels has no dependencies. The user needs GCC, Make and tools to
+generate .M files (e.g., 3DS models can be converted with the 3ds2m utility).
+
+The models in source .M files are assumed to be watertight.
+
+
+INSTALLATION
+
+Run
+	
+	make
+
+to compile the software. The resulting executable, m2legovoxels can be placed
+in a binary directory in your path, e.g. with
+
+	sudo cp m2legovoxels /usr/local/bin
+
+
+USAGE
+
+Run m2legovoxels with
+
+	./m2legovoxels model.m nrlayers
+
+where nrlayers is the number of layers (bricks). The program outputs several
+views of the model and its voxelized layers. Additionally, it renders a
+"model.m.ldr" file in LDR (LDraw) format which can be read by various Lego CAD
+programs.
+
+As an example, m2lgovoxels comes with a model of Michelangelo's David in
+"david.m" which can be voxelized into 50 lego layers with
+
+	./m2legovoxels david.m 50
+
+The output can be used in several ways. It is advised that the user of this
+software is confident with C++ and can play with the software to tune the
+voxelizer.
+
+
+HOW IT WORKS
+
+m2legovoxels is a simple ray tracer. An array of rays, parallel to the X axis
+are sent through the model and checked for being inside or outside of the
+model.
+
+
+COPYRIGHT & LICENSE
+
+m2legovoxels  Copyright (C) 2009  Anthony Liekens <anthony@liekens.net>
+This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see COPYING for details.
+
